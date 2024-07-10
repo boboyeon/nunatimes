@@ -75,6 +75,16 @@
     text-decoration: none;
   }
 
+  .open_btn {
+    background: none;
+    border: none;
+    margin: 10px;
+  }
+
+
+
+
+
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav_btn button {font-size: 18px;}
