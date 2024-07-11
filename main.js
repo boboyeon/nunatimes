@@ -1,11 +1,14 @@
 // const API_KEY = '59fb8bf8b6e54f2aa77e0eb21f46841b'
 let newsList = [];
-const menus = document.querySelectorAll(".menus button"); // 메뉴 버튼 호출
+const menus = document.querySelectorAll(".menus_btn button"); 
+// 메뉴 버튼 호출
 menus.forEach(menu=>menu.addEventListener("click",(event)=>getNewsByCategory(event)));
 // 각 버튼에 클릭이벤트
 
 async function getLatestNews() {
-    let url = `https://bobotimes.netlify.app/top-headlines`;
+    let url = new URL(
+        `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`
+      );
     const response = await fetch(url);
     // await : 비동기함수, 반드시 async함수에서만 사용가능
     const data = await response.json();
@@ -19,10 +22,14 @@ async function getLatestNews() {
 const getNewsByCategory= async (event)=>{
     const category = event.target.textContent.toLowerCase();
     console.log("category",category);
-    const url = `https://bobotimes.netlify.app/top-headlines&category=${category}`;
+    const url = new URL(
+        `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`
+      );
     const response = await fetch(url);
     const data = await response.json();
     console.log("ddd",data);
+    newsList = data.articles;
+    render();
 }
 
 const render = () => {
