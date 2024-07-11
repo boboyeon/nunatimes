@@ -18,7 +18,7 @@ async function getLatestNews() {
     console.log("ddd", newsList);
 }
 
-// 버튼 클릭 이벤트 함수
+// 메뉴 카테고리 버튼 클릭 이벤트 함수
 const getNewsByCategory= async (event)=>{
     const category = event.target.textContent.toLowerCase();
     console.log("category",category);
@@ -31,6 +31,29 @@ const getNewsByCategory= async (event)=>{
     newsList = data.articles;
     render();
 }
+
+// 검색 함수
+const searchNews= async ()=>{
+    const keyword = document.getElementById("search-input").value
+    console.log("keyword", keyword);
+    if (!keyword.trim()) return;
+    const url = new URL(
+        `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}`
+      );
+      
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("keyword data",data);
+    newsList = data.articles;
+    render();
+    document.getElementById("search-input").value = '';
+}
+
+document.getElementById("search-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        searchNews(); // 엔터 키가 눌렸을 때 검색 수행
+    }
+});
 
 const render = () => {
   const newsHTML = newsList.map(
