@@ -20,15 +20,24 @@ const render = () => {
                   <!-- col : 가로, lg : large,size, 4 : 비율 -->
                   <img
                     class="news_img_size"
-                    src= ${news.urlToImage}
+                    src="${news.urlToImage || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU'}"
+                    onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU';"
                   />
                 </div>
                 <div class="col-lg-8">
                   <!-- col : 가로, lg : large,size, 8 : 비율 -->
                   <!-- 1줄에 칼럼 사이즈가 8:4 비율인 그리드 형태 -->
                   <h2>${news.title}</h2>
-                  <p>${news.description}</p>
-                  <div>${news.source.name} * ${news.publishedAt}</div>
+                  <p>${
+                    news.description == null || news.description == ""
+                      ? "내용없음"
+                      : news.description.length > 200
+                      ? news.description.substring(0, 200) + "..."
+                      : news.description
+                   }</p>
+                  <div>${news.source.name || "no source"}  ${moment(
+                news.publishedAt
+     ).fromNow()}</div>
             </div>
           </div>`
   ).join('');
