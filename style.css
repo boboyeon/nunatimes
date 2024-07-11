@@ -29,13 +29,15 @@
     background-color: lightgray;
 }
 
+.news {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+}
+
 .news_img_size {
     max-width: 100%;
     max-height: 250px;
-}
-
-.news {
-    border-bottom: 1xp solid #000;
 }
 
 .sidenav {

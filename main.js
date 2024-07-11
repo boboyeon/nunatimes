@@ -38,7 +38,14 @@ const render = () => {
 
 getLatestNews();
 
-
+const openSearchBox = () => {
+    let inputArea = document.getElementById("input-area");
+    if (inputArea.style.display === "inline") {
+      inputArea.style.display = "none";
+    } else {
+      inputArea.style.display = "inline";
+    }
+  };
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
