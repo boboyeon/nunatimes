@@ -1,15 +1,29 @@
 // const API_KEY = '59fb8bf8b6e54f2aa77e0eb21f46841b'
 let newsList = [];
-const getLatestNews = async () => {
-  let url = `https://bobotimes.netlify.app/top-headlines`;
-  const response = await fetch(url);
-  // await : 비동기함수, 반드시 async함수에서만 사용가능
-  const data = await response.json();
-  // json : 파일 형식 중 하나, 객체를 텍스트화 시킨 파일
-  newsList = data.articles;
-  render();
-  console.log("ddd", newsList);
-};
+const menus = document.querySelectorAll(".menus button"); // 메뉴 버튼 호출
+menus.forEach(menu=>menu.addEventListener("click",(event)=>getNewsByCategory(event)));
+// 각 버튼에 클릭이벤트
+
+async function getLatestNews() {
+    let url = `https://bobotimes.netlify.app/top-headlines`;
+    const response = await fetch(url);
+    // await : 비동기함수, 반드시 async함수에서만 사용가능
+    const data = await response.json();
+    // json : 파일 형식 중 하나, 객체를 텍스트화 시킨 파일
+    newsList = data.articles;
+    render();
+    console.log("ddd", newsList);
+}
+
+// 버튼 클릭 이벤트 함수
+const getNewsByCategory= async (event)=>{
+    const category = event.target.textContent.toLowerCase();
+    console.log("category",category);
+    const url = `https://bobotimes.netlify.app/top-headlines&category=${category}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("ddd",data);
+}
 
 const render = () => {
   const newsHTML = newsList.map(
@@ -46,6 +60,10 @@ const render = () => {
 };
 
 getLatestNews();
+
+// 1. 버튼들에 클릭이벤트 주기
+// 2. 카테고리별 뉴스 가져오기
+// 3. 그 뉴스들 보여주기
 
 const openSearchBox = () => {
     let inputArea = document.getElementById("input-area");
