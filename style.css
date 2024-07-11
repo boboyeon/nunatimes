@@ -1,22 +1,27 @@
 .head_line {
     margin-top: 2em;
     display: flex;
-    /* 자녀 요소의 위치를 이동시킴 - .head_line의 자녀요소인 svg의 위치 이동*/
+    /* 자녀 요소의 위치를 이동시킴 - .head_line의 자녀요소인 svg의 위치 이동 */
     justify-content: center;
+    /* 중앙 정렬 */
 }
 
 .head_line svg {
     width: 430px;
+    /* SVG의 너비 지정 */
 }
 
 .menus {
-  margin-top: 2em;
-  margin-bottom: 3em;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  border-top: 1px solid #ebebeb;
-  border-bottom: 4px double #000;
+    margin-top: 2em;
+    margin-bottom: 3em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    /* 내용이 넘칠 경우 다음 줄로 넘김 */
+    border-top: 1px solid #ebebeb;
+    border-bottom: 4px double #000;
+    display: none;
+    /* 처음에는 숨김 */
 }
 
 .menus button {
@@ -36,62 +41,111 @@
 }
 
 .news_img_size {
-    max-width: 100%;
-    max-height: 250px;
+    max-width: 100%; /* 최대 너비 100% */
+    max-height: 250px; /* 최대 높이 250px */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* 시작점에 버튼 배치 */
+    padding: 10px;
 }
 
 #input-area {
     display: none;
+    /* 입력 영역 숨김 */
+}
+
+.icon-button {
+    margin-right: 20px;
+}
+
+.search-button {
+    padding: 8px 16px;
+    margin: 10px;
+    background-color: darkgrey; /* 배경색 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-button:hover {
+    background-color: lightblue; /* 호버 시 배경색 변경 */
+}
+
+.open_btn {
+    background: none;
+    border: none;
+    margin-right: 20px;
+
 }
 
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    height: 100%;
+    width: 0; 
+    /* 초기 너비 0으로 설정 */
+    position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
     background-color: lightgray;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-  }
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
 
-  .sidenav .side_btn button {
+.sidenav .side_btn button {
     padding: 10px 10px 10px 32px;
-    /* text-decoration: none; */
-    /* font-size: 25px; */
     color: #000;
     display: block;
-    transition: 0.3s;
+    transition: 0.3s; 
     border: none;
     background: none;
-  }
+}
 
-  .side_btn button:hover {
+.side_btn button:hover {
     color: #f1f1f1;
-  }
+}
 
-  .sidenav .closebtn {
+.sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-    text-decoration: none;
-  }
+}
 
-  .open_btn {
-    background: none;
-    border: none;
-    margin: 10px;
-  }
+/* 반응형 */
+@media screen and (max-width: 768px) {
+    .button-container {
+        display: flex;
+    }
 
+    .sidenav, .open_btn {
+        display: block; 
+        /* 모바일에서만 표시 */
+    }
+    .menus {
+        display: none; 
+        /* 모바일에서 숨김 */
+    }
+}
 
+@media screen and (min-width: 769px) {
+    .sidenav, .open_btn {
+        display: none; 
+        /* 데스크탑에서 숨김 */
+    }
+    .menus {
+        display: flex; 
+        /* 데스크탑에서만 표시 */
+    }
+}
 
-
-
-  @media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav_btn button {font-size: 18px;}
-  }
+    .sidenav .side_btn button {font-size: 18px;}
+}
