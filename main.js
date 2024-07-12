@@ -154,9 +154,6 @@ const errorRender = (errorMessage) => {
 
 getLatestNews();
 
-// 1. 버튼들에 클릭이벤트 주기
-// 2. 카테고리별 뉴스 가져오기
-// 3. 그 뉴스들 보여주기
 
 const openSearchBox = () => {
   let inputArea = document.getElementById("input_area");
@@ -167,6 +164,7 @@ const openSearchBox = () => {
   }
 };
 
+// nav 메뉴 클릭 시 배경색 
 navClick.forEach((button) => {
   button.addEventListener('click', () => {
     // 모든 버튼에서 nav_tabs 클래스를 제거
