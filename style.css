@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Chosunilbo_myungjo';
+}
+
 .head_line {
   width: 100%;
   margin-top: 2em;
@@ -34,6 +45,8 @@
   border: none;
   background: none;
   padding: 10px 15px;
+  /* font-size: 1em; */
+  font-weight: bolder;
 }
 
 .menus button:hover {
@@ -51,6 +64,15 @@
   /* 최대 너비 100% */
   max-height: 250px;
   /* 최대 높이 250px */
+}
+
+.col-lg-8 > h2 {
+    font-size: 1.8em;
+    margin: 0.6em 0;
+}
+
+.col-lg-8  > p {
+    font-size: 1em;
 }
 
 .gnb {
