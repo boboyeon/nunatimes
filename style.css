@@ -1,177 +1,199 @@
 .head_line {
-    width: 100%;
-    margin-top: 2em;
-    display: flex;
-    /* 자녀 요소의 위치를 이동시킴 - .head_line의 자녀요소인 svg의 위치 이동 */
-    justify-content: center;
-    /* 중앙 정렬 */
+  width: 100%;
+  margin-top: 2em;
+  display: flex;
+  /* 자녀 요소의 위치를 이동시킴 - .head_line의 자녀요소인 svg의 위치 이동 */
+  justify-content: center;
+  /* 중앙 정렬 */
 }
 
 .head_line svg {
-    width: 430px;
-    margin-bottom: 1em;
-    /* SVG의 너비 지정 */
+  width: 430px;
+  margin-bottom: 1em;
+  /* SVG의 너비 지정 */
 }
 
 .menus {
-    margin-top: 2em;
-    margin-bottom: 3em;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap; 
-    /* 내용이 넘칠 경우 다음 줄로 넘김 */
-    border-top: 1px solid #ebebeb;
-    border-bottom: 4px double #000;
-    display: none;
-    /* 처음에는 숨김 */
+  margin-top: 2em;
+  margin-bottom: 3em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* 내용이 넘칠 경우 다음 줄로 넘김 */
+  border-top: 1px solid #ebebeb;
+  border-bottom: 4px double #000;
+  display: none;
+  /* 처음에는 숨김 */
 }
 
+.menus > button.nav_tabs {
+    background-color: lightblue;
+  }
+
 .menus button {
-    border: none;
-    background: none;
-    margin: 5px;
+  border: none;
+  background: none;
+  padding: 10px 15px;
 }
 
 .menus button:hover {
-    background-color: lightgray;
+  background-color: lightblue;
 }
 
 .news {
-    border-bottom: 2px solid #ddd;
-    margin-bottom: 2em;
-    padding-bottom: 1em;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
 }
 
 .news_img_size {
-    max-width: 100%; /* 최대 너비 100% */
-    max-height: 250px; /* 최대 높이 250px */
+  max-width: 100%;
+  /* 최대 너비 100% */
+  max-height: 250px;
+  /* 최대 높이 250px */
 }
 
 .gnb {
-    width: 100%;
-    padding: 1em 0 3em 0;
+  width: 100%;
+  padding: 1em 0 3em 0;
 }
 
 .gnb > div {
-    float: left;
+  float: left;
 }
 
 /* side_nav 오픈 아이콘 영역 */
 .side_nav_icon {
-    margin: 0.5em 0.5em 0.5em 0;
+  margin: 0.5em 0.5em 0.5em 0;
 }
 
 /* side_nav 오픈 버튼 */
 .open_btn {
-    background: none;
-    border: none;
-    font-size: 1.2em;
+  background: none;
+  border: none;
+  font-size: 1.2em;
 }
 
 /* search 오픈 아이콘 영역 */
 .search_area {
-    margin: 0.5em;
+  margin: 0.5em;
 }
+
 /* search 오픈 버튼 */
 .search_icon {
-    background: none;
-    border: none;
-    font-size: 1.2em;
+  background: none;
+  border: none;
+  font-size: 1.2em;
 }
 
 #input_area {
-    display: none;
-    /* 입력 영역 숨김 */
-    margin-left: 10px;
+  display: none;
+  /* 입력 영역 숨김 */
+  margin-left: 10px;
 }
 
 #input-area input {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .search-button {
-    padding: 5px 15px;
-    margin: 5px;
-    background-color: darkgrey; /* 배경색 */
-    color: white;
-    border: none;
-    border-radius: 4px;
+  padding: 5px 15px;
+  margin: 5px;
+  background-color: darkgrey;
+  /* 배경색 */
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
 
 .search-button:hover {
-    background-color: lightblue; /* 호버 시 배경색 변경 */
+  background-color: lightblue;
+  /* 호버 시 배경색 변경 */
+}
+
+/* 검색어 강조 */
+.light_blue {
+    background-color: lightblue;
 }
 
 /* side_nav 설정 */
 .side_nav {
-    height: 100%;
-    width: 0; 
-    /* 초기 너비 0으로 설정 */
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: lightgray;
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: 0.5s;
+  height: 100%;
+  width: 0;
+  /* 초기 너비 0으로 설정 */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: lightgray;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
 }
 
 .side_nav .side_btn button {
-    padding: 10px 10px 10px 32px;
-    color: #000;
-    display: block;
-    transition: 0.3s; 
-    border: none;
-    background: none;
+  padding: 10px 10px 10px 32px;
+  color: #000;
+  display: block;
+  transition: 0.3s;
+  border: none;
+  background: none;
 }
 
 .side_btn button:hover {
-    color: #f1f1f1;
+  color: #f1f1f1;
 }
 
 .side_nav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    text-decoration: none;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  text-decoration: none;
 }
 
 /* 반응형 */
 @media screen and (max-width: 768px) {
+  .head_line {
+    border-bottom: 3px double #000;
+  }
 
-    .head_line {
-        border-bottom: 3px double #000;
-    }
+  #news_board {
+    margin-top: 2em;
+  }
 
-    #news_board {
-        margin-top: 2em;
-    }
+  .side_nav,
+  .open_btn {
+    display: block;
+    /* 모바일에서만 표시 */
+  }
 
-    .side_nav, .open_btn {
-        display: block; 
-        /* 모바일에서만 표시 */
-    }
-    .menus {
-        display: none; 
-        /* 모바일에서 숨김 */
-    }
+  .menus {
+    display: none;
+    /* 모바일에서 숨김 */
+  }
 }
 
 @media screen and (min-width: 769px) {
-    .side_nav, .open_btn {
-        display: none; 
-        /* 데스크탑에서 숨김 */
-    }
-    .menus {
-        display: flex; 
-        /* 데스크탑에서만 표시 */
-    }
+  .side_nav,
+  .open_btn {
+    display: none;
+    /* 데스크탑에서 숨김 */
+  }
+
+  .menus {
+    display: flex;
+    /* 데스크탑에서만 표시 */
+  }
 }
 
 @media screen and (max-height: 450px) {
-    .side_nav {padding-top: 15px;}
-    .side_nav .side_btn button {font-size: 18px;}
+  .side_nav {
+    padding-top: 15px;
+  }
+
+  .side_nav .side_btn button {
+    font-size: 18px;
+  }
 }
