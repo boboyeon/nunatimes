@@ -96,7 +96,7 @@ getLatestNews();
 // 3. 그 뉴스들 보여주기
 
 const openSearchBox = () => {
-    let inputArea = document.getElementById("input-area");
+    let inputArea = document.getElementById("input_area");
     if (inputArea.style.display === "inline") {
       inputArea.style.display = "none";
     } else {

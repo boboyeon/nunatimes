@@ -1,4 +1,5 @@
 .head_line {
+    width: 100%;
     margin-top: 2em;
     display: flex;
     /* 자녀 요소의 위치를 이동시킴 - .head_line의 자녀요소인 svg의 위치 이동 */
@@ -8,6 +9,7 @@
 
 .head_line svg {
     width: 430px;
+    margin-bottom: 1em;
     /* SVG의 너비 지정 */
 }
 
@@ -45,30 +47,54 @@
     max-height: 250px; /* 최대 높이 250px */
 }
 
-.button-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* 시작점에 버튼 배치 */
-    padding: 10px;
+.gnb {
+    width: 100%;
+    padding: 1em 0 3em 0;
 }
 
-#input-area {
+.gnb > div {
+    float: left;
+}
+
+/* side_nav 오픈 아이콘 영역 */
+.side_nav_icon {
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+/* side_nav 오픈 버튼 */
+.open_btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+}
+
+/* search 오픈 아이콘 영역 */
+.search_area {
+    margin: 0.5em;
+}
+/* search 오픈 버튼 */
+.search_icon {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+}
+
+#input_area {
     display: none;
     /* 입력 영역 숨김 */
+    margin-left: 10px;
 }
 
-.icon-button {
-    margin-right: 20px;
+#input-area input {
+    padding-left: 10px;
 }
 
 .search-button {
-    padding: 8px 16px;
-    margin: 10px;
+    padding: 5px 15px;
+    margin: 5px;
     background-color: darkgrey; /* 배경색 */
     color: white;
     border: none;
-    cursor: pointer;
     border-radius: 4px;
 }
 
@@ -76,14 +102,8 @@
     background-color: lightblue; /* 호버 시 배경색 변경 */
 }
 
-.open_btn {
-    background: none;
-    border: none;
-    margin-right: 20px;
-
-}
-
-.sidenav {
+/* side_nav 설정 */
+.side_nav {
     height: 100%;
     width: 0; 
     /* 초기 너비 0으로 설정 */
@@ -97,7 +117,7 @@
     transition: 0.5s;
 }
 
-.sidenav .side_btn button {
+.side_nav .side_btn button {
     padding: 10px 10px 10px 32px;
     color: #000;
     display: block;
@@ -110,7 +130,7 @@
     color: #f1f1f1;
 }
 
-.sidenav .closebtn {
+.side_nav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
@@ -121,11 +141,16 @@
 
 /* 반응형 */
 @media screen and (max-width: 768px) {
-    .button-container {
-        display: flex;
+
+    .head_line {
+        border-bottom: 3px double #000;
     }
 
-    .sidenav, .open_btn {
+    #news_board {
+        margin-top: 2em;
+    }
+
+    .side_nav, .open_btn {
         display: block; 
         /* 모바일에서만 표시 */
     }
@@ -136,7 +161,7 @@
 }
 
 @media screen and (min-width: 769px) {
-    .sidenav, .open_btn {
+    .side_nav, .open_btn {
         display: none; 
         /* 데스크탑에서 숨김 */
     }
@@ -147,6 +172,6 @@
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav .side_btn button {font-size: 18px;}
+    .side_nav {padding-top: 15px;}
+    .side_nav .side_btn button {font-size: 18px;}
 }
