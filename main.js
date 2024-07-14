@@ -180,17 +180,21 @@ const paginationRender = () => {
   // totalPages
   const totalPages = Math.ceil(totalResults / pageSize);
 
-  // lastPage
-  const lastPage = pageGroup * groupSize;
-  // 마지막 페이지 그룹이 그룹사이즈보다 작다면 lastPage = totalPages
+  // firstPage와 lastPage 계산
+  let lastPage = pageGroup * 5;
   if (lastPage > totalPages) {
     lastPage = totalPages;
   }
+  let firstPage = lastPage - 4 <= 0 ? 1 : lastPage - 4;
 
-  // firstPage
-  const firstPage =
-    lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
-  // 첫번째 페이지 계산식이 -가 나올 경우 최하값을 1로 설정 : 아니라면 기존 식을 실행
+  // 페이지 수가 5 이하일 경우 또는 마지막 페이지 그룹이 5개 이하일 경우 3개 페이지만 표시
+  if (totalPages <= 5 || (lastPage - firstPage + 1 < 5)) {
+    lastPage = firstPage + 2;
+    if (lastPage > totalPages) {
+      lastPage = totalPages;
+    }
+  }
+
 
   let paginationHTML = '';
 
@@ -228,25 +232,16 @@ const paginationRender = () => {
   }
 
   document.querySelector(".pagination").innerHTML = paginationHTML;
-
-  //   <nav aria-label="Page navigation example">
-  //   <ul class="pagination">
-  //     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  //     <li class="page-item"><a class="page-link" href="#">1</a></li>
-  //     <li class="page-item"><a class="page-link" href="#">2</a></li>
-  //     <li class="page-item"><a class="page-link" href="#">3</a></li>
-  //     <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  //   </ul>
-  // </nav>
 };
 
-// 페이지네이션의 각 페이지 이동 함수
 const moveToPage = (pageNum) => {
   console.log("moveToPage", pageNum);
-  // 페이지 번호가 1보다 작으면 1로 설정
+   // 페이지 번호가 1보다 작으면 1로 설정
+  const totalPages = Math.ceil(totalResults / pageSize);
+  // 총 페이지 수를 다시 계산
   if (pageNum < 1) pageNum = 1;
   // 페이지 번호가 마지막 페이지보다 크면 마지막 페이지로 설정
-  if (pageNum > Math.ceil(totalResults / pageSize)) pageNum = Math.ceil(totalResults / pageSize);
+  if (pageNum > totalPages) pageNum = totalPages;
   page = pageNum; // 1로 지정되어 있던 변수를 페이지 넘버로 재정의
   getNews();
 };
