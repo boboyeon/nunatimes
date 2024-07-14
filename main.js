@@ -214,7 +214,6 @@ const paginationRender = () => {
     </li>`;
   }
 
-
   if (page < totalPages) {
     paginationHTML += `
       <li class="page-item" onclick="moveToPage(${page + 1})">
@@ -244,8 +243,6 @@ const paginationRender = () => {
 // 페이지네이션의 각 페이지 이동 함수
 const moveToPage = (pageNum) => {
   console.log("moveToPage", pageNum);
-  // 총 페이지 수를 다시 계산
-  const totalPages = Math.ceil(totalResults / pageSize);
   // 페이지 번호가 1보다 작으면 1로 설정
   if (pageNum < 1) pageNum = 1;
   // 페이지 번호가 마지막 페이지보다 크면 마지막 페이지로 설정
