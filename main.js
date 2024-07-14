@@ -192,14 +192,42 @@ const paginationRender = () => {
     lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
   // 첫번째 페이지 계산식이 -가 나올 경우 최하값을 1로 설정 : 아니라면 기존 식을 실행
 
-  let paginationHTML = `<li class="page-item" onclick="moveToPage(${page-1})"><a class="page-link"> &lt;</a></li>`;
+  let paginationHTML = '';
+
+
+  if (page > 1) {
+    paginationHTML += `
+      <li class="page-item" onclick="moveToPage(1)">
+        <a class="page-link"> &laquo; </a>
+      </li>
+     
+      <li class="page-item" onclick="moveToPage(${page - 1})">
+        <a class="page-link"> &lt; </a>
+      </li>
+    `;
+  }
+  // <<버튼과 <버튼
+
   for (let i = firstPage; i <= lastPage; i++) {
-    paginationHTML += `<li class="page-item ${
-      i === page ? "active" : "" // 보고있는 페이지가 현재페이지라면 active
-    }" onclick ="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
+    paginationHTML += `<li class="page-item ${i === page ? "active" : ""}" onclick="moveToPage(${i})">
+      <a class="page-link">${i}</a>
+    </li>`;
   }
 
-  paginationHTML+= `<li class="page-item" onclick="moveToPage(${page+1})"><a class="page-link">&gt;</a></li>`
+
+  if (page < totalPages) {
+    paginationHTML += `
+      <li class="page-item" onclick="moveToPage(${page + 1})">
+        <a class="page-link"> &gt; </a>
+      </li>
+      
+      <li class="page-item" onclick="moveToPage(${totalPages})">
+        <a class="page-link"> &raquo; </a>
+      </li>
+    `;
+    // >버튼과 >>버튼
+  }
+
   document.querySelector(".pagination").innerHTML = paginationHTML;
 
   //   <nav aria-label="Page navigation example">
@@ -216,7 +244,13 @@ const paginationRender = () => {
 // 페이지네이션의 각 페이지 이동 함수
 const moveToPage = (pageNum) => {
   console.log("moveToPage", pageNum);
-  page = pageNum; // 1로 지정되어있던 변수를 페이지 넘버로 재정의
+  // 총 페이지 수를 다시 계산
+  const totalPages = Math.ceil(totalResults / pageSize);
+  // 페이지 번호가 1보다 작으면 1로 설정
+  if (pageNum < 1) pageNum = 1;
+  // 페이지 번호가 마지막 페이지보다 크면 마지막 페이지로 설정
+  if (pageNum > Math.ceil(totalResults / pageSize)) pageNum = Math.ceil(totalResults / pageSize);
+  page = pageNum; // 1로 지정되어 있던 변수를 페이지 넘버로 재정의
   getNews();
 };
 
